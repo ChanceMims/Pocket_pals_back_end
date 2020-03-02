@@ -1,0 +1,2 @@
+class PocketPal < ApplicationRecord
+end
