@@ -6,9 +6,9 @@ class AuthController < ApplicationController
         if user && user.authenticate(user_login_params[:password])
             token = encode_token({user_id: user.id})
             puts 'works'
-            render json: {user: user, jwt: token}, status: :accepted
+            render json: {user: user, decks: user.decks , jwt: token , status: :created}
         else
-            render json: { message: 'Invalid username or password' }, status: :unauthorized
+            render json: { error: 'Invalid username or password' , status: :unauthorized}
         end
     end
 
