@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :decks, only: [:create, :show, :update, :delete]
 
   post '/login', to: 'auth#create'
-  get '/profile', to: 'user#profile'
+  get '/profile', to: 'users#profile'
 
 end

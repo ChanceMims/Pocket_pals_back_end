@@ -21,8 +21,6 @@ class DeckContainer extends Component{
      handleClick = deck =>{
           const cookie = new Cookies();
           const authToken = cookie.get('userToken');
-          console.log(cookie.get('userToken'))
-          //console.log(deck)
           fetch(`http://localhost:3000/decks/${deck.id}`, {
                method: 'GET',
                headers: {
@@ -108,7 +106,7 @@ class DeckContainer extends Component{
           )
      }
 
-    
+   // { make the pokit pals the right size height:300px, width:pc300}
 
 }
      

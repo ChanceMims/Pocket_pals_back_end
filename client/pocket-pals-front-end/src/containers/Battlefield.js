@@ -107,8 +107,11 @@ class Battlefield extends Component{
         const inactivePals = this.state.myPals.filter(pal => (
             pal.name !== this.state.selectedPal.name
         ))
-        this.state.selectedPal.status = 'active';
-        console.log(inactivePals)
+        const updatedPal = this.setState.selectedPal;
+        updatedPal.status = 'active';
+        this.setState({
+            selectedPal: updatedPal
+        })
         this.setState({
             myPals: [...inactivePals, this.state.selectedPal],
             messages: [...this.state.messages, `${this.state.selectedPal.name} has been activated`]
