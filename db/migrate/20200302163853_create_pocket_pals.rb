@@ -3,10 +3,9 @@ class CreatePocketPals < ActiveRecord::Migration[6.0]
     create_table :pocket_pals do |t|
       t.string :name
       t.string :img_url
-      t.string :type
       t.integer :hp
-      t.integer :def
-      t.integer :attck
+      t.integer :defense
+      t.integer :attack
 
       t.timestamps
     end
