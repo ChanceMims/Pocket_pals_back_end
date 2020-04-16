@@ -4,11 +4,8 @@ class DecksController < ApplicationController
     def create
         deck = Deck.new(user_id: params[:user_id], name: params[:name])
         if deck.valid? 
-            params[:pocket_pals].map do |pal|
-                deck.pocket_pals << pal
-            end
             deck.save
-            render json: {deck: deck, pocket_pals: deck.pocket_pals}
+            render json: deck
         else
             render json: {error: 'Trouble building deck, please try again'}
         end
@@ -23,16 +20,9 @@ class DecksController < ApplicationController
         deck = Deck.find(params[:id])
 
             deck.pocket_pals.clear
-            params[:pocket_pals].map do |pal|
-                
-                if pal
-                    hp = getValue(pal[:stats], 'hp')
-                    defense = getValue(pal[:stats], 'defense')
-                    attck = getValue(pal[:stats], 'attack')
-                    new_pal = PocketPal.create(name: pal[:name], img_url: pal[:sprites][:front], pokedex_id: pal[:id], element: pal[:types][0], def: defense, hp: hp, attck: attck)
-                    deck.pocket_pals << new_pal
-                end
-                
+            # byebug
+            params[:pocket_pals].map do |id|
+                  deck.pocket_pals << PocketPal.find(id)
             end
             deck.save
             render json: {deck: deck, pocket_pals: deck.pocket_pals}
@@ -46,11 +36,6 @@ class DecksController < ApplicationController
 
     private
 
-        def getValue(arr, term)
-            arr.find do |stat|
-                return stat[:value] if stat[:name] == term
-            end
-        end
 
         def set_deck
             deck = Deck.find(params[:id])

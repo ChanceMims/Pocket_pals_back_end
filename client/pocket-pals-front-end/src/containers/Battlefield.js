@@ -85,12 +85,12 @@ class Battlefield extends Component{
     assignPalsStatus = () => {
         //console.log(this.props)
         const palArray = [];
-        this.props.pals.map(pal => {
-            pal.status = 'inactive'
-            palArray.push(pal)
-            console.log(pal)
+        // this.props.pals.map(pal => {
+        //     pal.status = 'inactive'
+        //     palArray.push(pal)
+        //     console.log(pal)
             
-        })
+        // })
         this.setState({
             myPals: palArray
         })

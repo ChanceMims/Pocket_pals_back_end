@@ -10,7 +10,7 @@ const PocketPal = (props) => (
         >
             <Card>
             <Card.Header>{props.pal.name}</Card.Header>
-                <Image src={props.pal.sprites.front}/>
+                <Image src={props.pal.img_url}/>
 
                 
             

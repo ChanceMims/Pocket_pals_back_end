@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:create]
   resources :decks, only: [:create, :show, :update, :delete]
+  resources :pocket_pals, only: :index
 
   post '/login', to: 'auth#create'
   get '/profile', to: 'users#profile'
